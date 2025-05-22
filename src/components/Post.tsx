@@ -58,7 +58,7 @@ export default function Post({ post, isListing = true }: PostProps) {
           href={`/posts/${post.slug}`}
           className="text-blue-500 hover:underline mt-4 inline-block"
         >
-          بیشتر بخوانید
+          ادامه مطلب
         </Link>
       )}
     </article>

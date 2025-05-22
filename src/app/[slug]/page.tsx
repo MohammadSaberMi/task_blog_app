@@ -5,6 +5,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'next/navigation';
 import type { Post, Comment } from '@/types';
 import CommentForm from './_components/commentform';
+import Spinner from '@/components/Spinner';
 
 const getPosts = async (): Promise<Post[]> => {
   return [
@@ -186,8 +187,8 @@ export default function PostPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-white bg-slate-900">
-        در حال بارگذاری پست...
+      <div className="min-h-screen flex items-center justify-center text-white bg-slate-700">
+        <Spinner />
       </div>
     );
   }
@@ -230,12 +231,27 @@ export default function PostPage() {
           >
             وبلاگ من
           </Link>
-          <div className="flex items-center justify-center ">
+          <div className="flex py-1  px-2 bg-sky-800 hover:bg-sky-600 rounded-lg text-sm font-medium transition-colors  ">
             <Link
               href="/"
-              className="px-4 py-2 bg-sky-500 hover:bg-sky-600 rounded-lg text-sm font-medium transition-colors"
+              className="flex rounded-lg text-sm font-medium transition-colors items-center justify-center "
             >
-              بازگشت
+              {' '}
+              <span className="cursor-pointer">بازگشت</span>
+              <svg
+                width="26"
+                height="26"
+                viewBox="0 0 26 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M3.62234 9.7822C3.12589 11.8987 3.12589 14.1013 3.62234 16.2178C4.33929 19.2742 6.72578 21.6607 9.78223 22.3776C11.8987 22.8741 14.1013 22.8741 16.2178 22.3776C19.2742 21.6607 21.6607 19.2742 22.3777 16.2177C22.8741 14.1013 22.8741 11.8987 22.3777 9.7822C21.6607 6.72575 19.2742 4.33925 16.2178 3.62231C14.1013 3.12586 11.8987 3.12586 9.78223 3.62231C6.72578 4.33925 4.33929 6.72575 3.62234 9.7822ZM12.3872 16.0169C12.1529 16.2512 11.773 16.2512 11.5387 16.0169L8.94603 13.4243C8.83351 13.3117 8.7703 13.1591 8.7703 13C8.7703 12.8409 8.83351 12.6883 8.94603 12.5757L11.5387 9.98309C11.773 9.74877 12.1529 9.74877 12.3872 9.98309C12.6215 10.2174 12.6215 10.5973 12.3872 10.8316L10.8188 12.4L16.6297 12.4C16.9611 12.4 17.2297 12.6686 17.2297 13C17.2297 13.3314 16.9611 13.6 16.6297 13.6L10.8188 13.6L12.3872 15.1684C12.6215 15.4027 12.6215 15.7826 12.3872 16.0169Z"
+                  fill="#95b3ca"
+                />
+              </svg>
             </Link>
           </div>
         </nav>
